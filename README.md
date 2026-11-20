@@ -1,1 +1,10 @@
 # Data_Science_Project
+This project looks at spotting fake news with machine learning and some natural language processing steps. The goal was to test three algorithms on how well they separate real articles from fake ones. Logistic regression served as a simple baseline while multinomial naive bayes worked from word counts and xgboost tried to boost performance through decision trees. They turned the text into numbers using tf idf so the models could actually process it.
+
+The data came from the ISOT set with two files originally holding almost forty five thousand articles. After dropping duplicates and empty pieces the cleaned version had about thirty eight thousand left with slightly more real news than fake. Basic details like title text subject date and a label were all that stayed. It feels like cleaning took more time than expected but that is probably normal.
+
+They wanted to explore the data first then clean it run some exploratory checks extract features train the models and look for overfitting or source bias along the way. The workflow went through loading cleaning eda tf idf training five fold checks hyperparameter search and finally error analysis. I think the cross validation part helped keep things stable but the results still depend heavily on this one dataset.
+
+Performance numbers on the tuned xgboost model came out very high with accuracy around 99.7 percent and similar scores for precision recall and f1. The roc auc was even higher. Only twenty one mistakes showed up on the test split yet some of those errors tied back to reuters wording patterns. That makes me wonder how much the model really learned about content versus just source clues.
+
+Limitations stand out pretty clearly. High scores here do not mean the same thing on new publishers or different topics and the system cannot actually check facts on its own. Human review stays necessary. Future work could try other datasets or models like bert to see if results hold up better. Some of the bias issues might need different training tricks too.
